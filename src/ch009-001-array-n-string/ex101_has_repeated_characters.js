@@ -61,3 +61,32 @@ export function hasRepeatedCharactersUsingSort(str) {
     }
     return false
 }
+
+// bit vector를 사용한 예시 (디버깅 가능한 형태로 변형)
+export function hasRepeatedCharactersUsingBitMask(str) {
+    const debuggerTable = []
+    let checker = 0
+    for (let i = 0; i < str.length; i++) {
+        // let val = str.charCodeAt(i) - 'a'.charCodeAt(0)
+        // 이 부분을 아래와 같이 바꾸면 책에서 나온 입력값이 영어로 한정되는 제약이 사라진다.
+        let val = str.charCodeAt(i)
+        if ((checker & (1 << val)) > 0) {
+            console.log(checker.toString(2))
+            console.log((1 << val).toString(2))
+            debugger
+            return true // Found a repeated character
+        }
+        debuggerTable.push({
+            val,
+            'checker.toString(2)': checker.toString(2),
+            '(1 << val).toString(2)': (1 << val).toString(2),
+            'bitwise or 된 checker.toString(2)': (
+                checker |
+                (1 << val)
+            ).toString(2),
+        })
+        checker |= 1 << val
+    }
+    console.table(debuggerTable)
+    return false // No repeated characters found
+}
