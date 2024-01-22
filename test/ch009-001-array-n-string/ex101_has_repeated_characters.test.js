@@ -4,7 +4,7 @@ import {
     hasRepeatedCharactersWithoutAdditionalDataStructure,
     hasRepeatedCharactersUsingSort,
     hasRepeatedCharactersUsingSimple,
-    hasRepeatedCharactersUsingBitMask,
+    hasRepeatedCharactersUsingBitVector,
 } from '../../src/ch009-001-array-n-string/ex101_has_repeated_characters.js'
 
 describe('문자열이 주어졌을 때, 이 문자열에 같은 문자가 중복되어 등장하는지 확인', () => {
@@ -47,9 +47,9 @@ describe('문자열이 주어졌을 때, 이 문자열에 같은 문자가 중�
         })
     })
 
-    describe('bitMask를 활용한 방식', () => {
+    describe('bit vector를 활용한 방식', () => {
         test.each(data)('%s -> %s', (str, expected) => {
-            expect(hasRepeatedCharactersUsingBitMask(str)).toBe(expected)
+            expect(hasRepeatedCharactersUsingBitVector(str)).toBe(expected)
         })
     })
 })

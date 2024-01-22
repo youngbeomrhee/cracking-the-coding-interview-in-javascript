@@ -1,6 +1,15 @@
 /**
  * 중복이 없는가: 문자열이 주어졌을 때， 이 문자열에 같은 문자가 중복되어 등장하는지 확인하는 알고리즘을 작성하라.
  * 자료구조를 추가로 사용하지 않고 풀 수 있는 알고리즘 또한 고민하라.
+ *
+ * # 해법
+ * - Set처럼 데이터의 중복을 허락하지 않는 형태로 변환한 후에 길이를 비교한다 -> 길이가 다르면 중복된 문자가 존재
+ * - Hash 함수로 문자별로 분류하여 Hash table에 넣는다. 분류할 때 이미 table에 있으면 중복된 문자가 존재
+ * - 문자열을 정렬한 후 순차적으로 같은 문자가 이어지는지 확인한다
+ * - Hash table 대신에 bit vector를 사용한다
+ *
+ * # Early return
+ * - ASCII 코드를 사용한다면 문자열의 길이가 128글자 이상이면 false
  */
 // 추가적인 자료구조를 사용한 경우
 export function hasRepeatedCharacters(str) {
@@ -63,7 +72,7 @@ export function hasRepeatedCharactersUsingSort(str) {
 }
 
 // bit vector를 사용한 예시 (디버깅 가능한 형태로 변형)
-export function hasRepeatedCharactersUsingBitMask(str) {
+export function hasRepeatedCharactersUsingBitVector(str) {
     const debuggerTable = []
     let checker = 0
     for (let i = 0; i < str.length; i++) {
