@@ -10,6 +10,7 @@ export class LinkedList {
     constructor(arr) {
         this.first = null
         this.last = null
+        this.size = arr.length
         this.fromArray(arr)
     }
 
@@ -24,6 +25,23 @@ export class LinkedList {
             }
             this.last = newNode
         })
+    }
+
+    node(index) {
+        if (index < this.size >> 1) {
+            // index가 size의 절반보다 작으면 앞에서부터 조회
+            let x = this.first
+            for (let i = 0; i < index; i++) {
+                x = x.next
+            }
+            return x
+        } else {
+            let x = this.last
+            for (let i = this.size - 1; i > index; i--) {
+                x = x.prev
+            }
+            return x
+        }
     }
 
     static areLinkedListsIdentical(firstNode1, firstNode2) {

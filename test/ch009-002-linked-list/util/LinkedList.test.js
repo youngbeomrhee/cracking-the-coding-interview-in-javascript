@@ -37,4 +37,14 @@ describe('LinkedList', () => {
         first.next.prev = null
         expect(LinkedList.areLinkedListsIdentical(first, first2)).toBe(false)
     })
+
+    test('특정 index의 node를 가져온다', () => {
+        const ll = new LinkedList([1, 2, 3, 4, 5])
+
+        expect(ll.node(0).item).toBe(1)
+        expect(ll.node(1).item).toBe(2)
+        expect(ll.node(2).item).toBe(3)
+        expect(ll.node(3).item).toBe(4)
+        expect(ll.node(4).item).toBe(5)
+    })
 })
