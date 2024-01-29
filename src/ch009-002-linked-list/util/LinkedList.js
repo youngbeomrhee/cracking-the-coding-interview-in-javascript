@@ -44,9 +44,12 @@ export class LinkedList {
         }
     }
 
-    static areLinkedListsIdentical(firstNode1, firstNode2) {
+    static areLinkedListsIdentical(firstNode1, firstNode2, isSingly = false) {
         // 둘 중 하나라도 첫 번째 node가 아니라면 false
-        if (firstNode1.prev !== null || firstNode2.prev !== null) {
+        if (
+            !isSingly &&
+            (firstNode1.prev !== null || firstNode2.prev !== null)
+        ) {
             return false
         }
         let current1 = firstNode1
@@ -54,7 +57,7 @@ export class LinkedList {
 
         while (current1 !== null && current2 !== null) {
             if (
-                current1.prev?.item !== current2.prev?.item ||
+                (!isSingly && current1.prev?.item !== current2.prev?.item) ||
                 current1.item !== current2.item
             ) {
                 return false
