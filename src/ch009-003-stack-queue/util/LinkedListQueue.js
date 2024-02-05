@@ -2,8 +2,7 @@ import { LinkedListNode } from './LinkedListNode'
 
 export class LinkedListQueue {
     constructor() {
-        this.head = null
-        this.tail = null
+        this.clear()
     }
     add(data) {
         const newNode = new LinkedListNode(data)
@@ -28,5 +27,9 @@ export class LinkedListQueue {
             return null
         }
         return this.head.data
+    }
+    clear() {
+        this.head = null
+        this.tail = null
     }
 }

@@ -1,6 +1,6 @@
 export class ArrayStack {
     constructor() {
-        this.items = []
+        this.clear()
     }
     push(data) {
         return this.items.push(data)
@@ -19,5 +19,8 @@ export class ArrayStack {
     }
     isEmpty() {
         return this.items.length < 1
+    }
+    clear() {
+        this.items = []
     }
 }

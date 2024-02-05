@@ -1,6 +1,6 @@
 export class ArrayQueue {
     constructor() {
-        this.items = []
+        this.clear()
     }
     add(data) {
         return this.items.push(data)
@@ -19,5 +19,8 @@ export class ArrayQueue {
     }
     isEmpty() {
         return this.items.length < 1
+    }
+    clear() {
+        this.items = []
     }
 }

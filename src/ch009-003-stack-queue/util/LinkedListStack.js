@@ -2,7 +2,7 @@ import { LinkedListNode } from './LinkedListNode'
 
 export class LinkedListStack {
     constructor() {
-        this.top = null
+        this.clear()
     }
     push(data) {
         const newNode = new LinkedListNode(data)
@@ -27,5 +27,8 @@ export class LinkedListStack {
     }
     isEmpty() {
         return this.top === null
+    }
+    clear() {
+        this.top = null
     }
 }
