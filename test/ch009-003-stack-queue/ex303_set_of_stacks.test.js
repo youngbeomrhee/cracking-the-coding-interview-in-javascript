@@ -1,0 +1,26 @@
+import { SetOfStacks } from '../../src/ch009-003-stack-queue/ex303_set_of_stacks'
+
+describe('접시 무더기', () => {
+    test('', () => {
+        const st = new SetOfStacks(3)
+        expect(st.peek()).toBe(null)
+        st.push(1)
+        st.push(2)
+        st.push(3)
+        st.push(4)
+        st.push(5)
+        expect(st.peek()).toBe(5)
+        st.pop()
+        expect(st.peek()).toBe(4)
+        st.pop()
+        expect(st.peek()).toBe(3)
+        st.pop()
+        expect(st.peek()).toBe(2)
+        st.pop()
+        expect(st.peek()).toBe(1)
+        st.pop()
+        expect(st.peek()).toBe(null)
+        st.pop()
+        expect(st.peek()).toBe(null)
+    })
+})
