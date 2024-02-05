@@ -2,8 +2,7 @@ import { LinkedListStack } from '../../src/ch009-003-stack-queue/util/LinkedList
 import { sortStack } from '../../src/ch009-003-stack-queue/ex305_sort_stack'
 
 describe('스택 정렬', () => {
-    test('', () => {
-        // 실제 실행할 함수로 변경
+    test('stack에 push -> 정렬 -> 정렬여부 확인', () => {
         const stack = new LinkedListStack()
         stack.push(3)
         stack.push(1)

@@ -4,8 +4,8 @@ import {
     Dog,
 } from '../../src/ch009-003-stack-queue/ex306_animal_shelter'
 
-describe('', () => {
-    test('', () => {
+describe('AnimalShelter', () => {
+    test('전체 프로세스 test', () => {
         const shelter = new AnimalShelter()
         shelter.enqueue(new Dog('Dog1'))
         shelter.enqueue(new Cat('Cat1'))
