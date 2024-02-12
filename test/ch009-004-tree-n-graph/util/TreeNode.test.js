@@ -1,6 +1,6 @@
 import {
     BinaryNode,
-    PushElement,
+    Logger,
     inOrderTraversal,
     postOrderTraversal,
     preOrderTraversal,
@@ -32,20 +32,89 @@ describe('Tree test', () => {
     })
 
     test('inOrderTraversal', () => {
-        const pushElement = new PushElement()
-        inOrderTraversal(root, (node) => pushElement.push(node.name))
-        expect(pushElement.elements).toStrictEqual([4, 2, 5, 1, 6, 3, 7])
+        const logger = new Logger()
+        inOrderTraversal(root, (node) => logger.push(node.name))
+        expect(logger.log).toStrictEqual([4, 2, 5, 1, 6, 3, 7])
     })
 
     test('preOrderTraversal', () => {
-        const pushElement = new PushElement()
-        preOrderTraversal(root, (node) => pushElement.push(node.name))
-        expect(pushElement.elements).toStrictEqual([1, 2, 4, 5, 3, 6, 7])
+        const logger = new Logger()
+        preOrderTraversal(root, (node) => logger.push(node.name))
+        expect(logger.log).toStrictEqual([1, 2, 4, 5, 3, 6, 7])
     })
 
     test('postOrderTraversal', () => {
-        const pushElement = new PushElement()
-        postOrderTraversal(root, (node) => pushElement.push(node.name))
-        expect(pushElement.elements).toStrictEqual([4, 5, 2, 6, 7, 3, 1])
+        const logger = new Logger()
+        const level = 1
+        const isDebugging = true
+        postOrderTraversal(
+            root,
+            (node) => logger.push(node.name),
+            level,
+            isDebugging
+        )
+        expect(logger.log).toStrictEqual([4, 5, 2, 6, 7, 3, 1])
+        /** 호출 디버깅
+
+|       ┌── 7
+|   ┌── 3
+|   |   └── 6
+└── 1
+    |   ┌── 5
+    └── 2
+        └── 4
+
+> postOrderTraversal(1) called
+> postOrderTraversal(1.left) call
+>> postOrderTraversal(2) called
+>> postOrderTraversal(2.left) call
+>>> postOrderTraversal(4) called
+>>> postOrderTraversal(4.left) call
+>>>> postOrderTraversal(undefined) called
+<<<< postOrderTraversal(undefined) callstack pop
+>>> postOrderTraversal(4.right) call
+>>>> postOrderTraversal(undefined) called
+<<<< postOrderTraversal(undefined) callstack pop
+>>> visit(4)
+<<< postOrderTraversal(4) callstack pop
+>> postOrderTraversal(2.right) call
+>>> postOrderTraversal(5) called
+>>> postOrderTraversal(5.left) call
+>>>> postOrderTraversal(undefined) called
+<<<< postOrderTraversal(undefined) callstack pop
+>>> postOrderTraversal(5.right) call
+>>>> postOrderTraversal(undefined) called
+<<<< postOrderTraversal(undefined) callstack pop
+>>> visit(5)
+<<< postOrderTraversal(5) callstack pop
+>> visit(2)
+<< postOrderTraversal(2) callstack pop
+> postOrderTraversal(1.right) call
+>> postOrderTraversal(3) called
+>> postOrderTraversal(3.left) call
+>>> postOrderTraversal(6) called
+>>> postOrderTraversal(6.left) call
+>>>> postOrderTraversal(undefined) called
+<<<< postOrderTraversal(undefined) callstack pop
+>>> postOrderTraversal(6.right) call
+>>>> postOrderTraversal(undefined) called
+<<<< postOrderTraversal(undefined) callstack pop
+>>> visit(6)
+<<< postOrderTraversal(6) callstack pop
+>> postOrderTraversal(3.right) call
+>>> postOrderTraversal(7) called
+>>> postOrderTraversal(7.left) call
+>>>> postOrderTraversal(undefined) called
+<<<< postOrderTraversal(undefined) callstack pop
+>>> postOrderTraversal(7.right) call
+>>>> postOrderTraversal(undefined) called
+<<<< postOrderTraversal(undefined) callstack pop
+>>> visit(7)
+<<< postOrderTraversal(7) callstack pop
+>> visit(3)
+<< postOrderTraversal(3) callstack pop
+> visit(1)
+< postOrderTraversal(1) callstack pop
+*/
     })
 })

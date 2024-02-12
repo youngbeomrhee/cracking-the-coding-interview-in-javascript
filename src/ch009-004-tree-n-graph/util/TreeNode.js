@@ -35,15 +35,12 @@ export function printTree(node, prefix = '', isLeft = true) {
     }
 }
 
-export class PushElement {
+export class Logger {
     constructor() {
-        this.elements = []
+        this.log = []
     }
     push(ele) {
-        this.elements.push(ele)
-    }
-    getElements() {
-        return this.elements
+        this.log.push(ele)
     }
 }
 
@@ -66,10 +63,33 @@ export function preOrderTraversal(binaryNode, visit = console.log) {
 }
 
 // 후위 순회(post-order traversal): 모든 자식 노드들을 먼저 방문한 뒤 마지막에 현재 노드를 방문하는 방법
-export function postOrderTraversal(binaryNode, visit = console.log) {
+export function postOrderTraversal(
+    binaryNode,
+    visit = console.log,
+    level = 1,
+    isDebugging = false
+) {
+    isDebugging &&
+        console.log(
+            `${'>'.repeat(level)} postOrderTraversal(${binaryNode?.name}) called`
+        )
     if (binaryNode != null) {
-        postOrderTraversal(binaryNode.left, visit)
-        postOrderTraversal(binaryNode.right, visit)
+        isDebugging &&
+            console.log(
+                `${'>'.repeat(level)} postOrderTraversal(${binaryNode?.name}.left) call`
+            )
+        postOrderTraversal(binaryNode.left, visit, level + 1, isDebugging)
+        isDebugging &&
+            console.log(
+                `${'>'.repeat(level)} postOrderTraversal(${binaryNode?.name}.right) call`
+            )
+        postOrderTraversal(binaryNode.right, visit, level + 1, isDebugging)
+        isDebugging &&
+            console.log(`${'>'.repeat(level)} visit(${binaryNode.name})`)
         visit(binaryNode)
     }
+    isDebugging &&
+        console.log(
+            `${'<'.repeat(level)} postOrderTraversal(${binaryNode?.name}) callstack pop`
+        )
 }
