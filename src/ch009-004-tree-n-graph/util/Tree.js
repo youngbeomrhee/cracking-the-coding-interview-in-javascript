@@ -1,10 +1,3 @@
-export class Node {
-    constructor(name) {
-        this.neme = name
-        this.children = null
-    }
-}
-
 export class BinaryNode {
     constructor(name) {
         this.name = name
@@ -13,18 +6,6 @@ export class BinaryNode {
     }
 }
 
-// export class Tree {
-//     constructor(root) {
-//         this.root = root
-//     }
-// }
-
-// export class BinaryTree {
-//     constructor() {
-//         this.root = new BinaryNode()
-//     }
-// }
-
 export function printTree(node, prefix = '', isLeft = true) {
     if (node.right) {
         printTree(node.right, `${prefix}${isLeft ? '|   ' : '    '}`, false)
@@ -32,15 +13,6 @@ export function printTree(node, prefix = '', isLeft = true) {
     console.log(`${prefix}${isLeft ? '└── ' : '┌── '}${node.name}`)
     if (node.left) {
         printTree(node.left, `${prefix}${isLeft ? '    ' : '|   '}`, true)
-    }
-}
-
-export class Logger {
-    constructor() {
-        this.log = []
-    }
-    push(ele) {
-        this.log.push(ele)
     }
 }
 
