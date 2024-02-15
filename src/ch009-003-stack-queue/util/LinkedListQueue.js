@@ -6,7 +6,7 @@ export class LinkedListQueue {
     }
     add(data) {
         const newNode = new LinkedListNode(data)
-        if (this.head === null) {
+        if (this.isEmpty()) {
             this.head = newNode
             this.tail = newNode
         } else {
@@ -15,7 +15,7 @@ export class LinkedListQueue {
         }
     }
     remove() {
-        if (this.head === null) {
+        if (this.isEmpty()) {
             return null
         }
         const data = this.head.data
@@ -23,10 +23,13 @@ export class LinkedListQueue {
         return data
     }
     peek() {
-        if (this.head === null) {
+        if (this.isEmpty()) {
             return null
         }
         return this.head.data
+    }
+    isEmpty() {
+        return this.head === null
     }
     clear() {
         this.head = null
