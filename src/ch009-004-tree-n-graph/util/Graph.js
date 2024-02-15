@@ -3,7 +3,7 @@ import { LinkedListQueue } from '../../ch009-003-stack-queue/util/LinkedListQueu
 export class GraphNode {
     constructor(name) {
         this.name = name
-        this.adjacent = null
+        this.adjacent = []
         this.visited = false
     }
 }
@@ -20,7 +20,7 @@ export function depthFirstSearch(root, visit = console.log) {
     }
     visit(root)
     root.visited = true
-    root.adjacent?.forEach((node) => {
+    root.adjacent.forEach((node) => {
         if (node.visited === false) {
             depthFirstSearch(node, visit)
         }
@@ -34,7 +34,7 @@ export function breadthFirstSearch(root, visit = console.log) {
     while (!queue.isEmpty()) {
         const r = queue.remove()
         visit(r)
-        r.adjacent?.forEach((node) => {
+        r.adjacent.forEach((node) => {
             if (node.visited === false) {
                 node.visited = true
                 queue.add(node)
