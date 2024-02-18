@@ -24,7 +24,7 @@ export class Graph {
         // 기존 방문 히스토리 초기화
         Object.values(this.nodes).forEach((node) => (node.visited = false))
     }
-    depthFirstSearch(visit = console.log) {
+    depthFirstSearch(node, visit = console.log) {
         this.clearVisitHistory()
         const dfs = (node, visit) => {
             if (!node) {
@@ -39,25 +39,22 @@ export class Graph {
                 }
             })
         }
-        dfs(Object.values(this.nodes)[0], visit)
+        dfs(node, visit)
     }
-    breadthFirstSearch(visit = console.log) {
+    breadthFirstSearch(node, visit = console.log) {
         this.clearVisitHistory()
-        const root = Object.values(this.nodes)[0]
-        if (root) {
-            const queue = new LinkedListQueue()
-            root.visited = true
-            queue.add(root)
-            while (!queue.isEmpty()) {
-                const r = queue.remove()
-                visit(r)
-                r.adjacent.forEach((node) => {
-                    if (node.visited === false) {
-                        node.visited = true
-                        queue.add(node)
-                    }
-                })
-            }
+        const queue = new LinkedListQueue()
+        node.visited = true
+        queue.add(node)
+        while (!queue.isEmpty()) {
+            const r = queue.remove()
+            visit(r)
+            r.adjacent.forEach((node) => {
+                if (node.visited === false) {
+                    node.visited = true
+                    queue.add(node)
+                }
+            })
         }
     }
 }
