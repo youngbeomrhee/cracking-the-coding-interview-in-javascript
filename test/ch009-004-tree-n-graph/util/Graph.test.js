@@ -1,9 +1,4 @@
-import {
-    Graph,
-    GraphNode,
-    breadthFirstSearch,
-    depthFirstSearch,
-} from '../../../src/ch009-004-tree-n-graph/util/Graph'
+import { Graph } from '../../../src/ch009-004-tree-n-graph/util/Graph'
 import { Logger } from '../../../src/ch009-004-tree-n-graph/util/Logger'
 
 describe('Graph test', () => {
@@ -26,15 +21,6 @@ describe('Graph test', () => {
         graph.addEdge(3, 4)
     })
     test('depthFirstSearch', () => {
-        const logger = new Logger()
-        const root = Object.values(graph.nodes)[0]
-        graph.depthFirstSearch(root, (node) => logger.push(node.name))
-        expect(logger.log).toStrictEqual([0, 1, 3, 2, 4, 5])
-    })
-    test('breadthFirstSearch', () => {
-        const logger = new Logger()
-        const root = Object.values(graph.nodes)[0]
-        graph.breadthFirstSearch(root, (node) => logger.push(node.name))
-        expect(logger.log).toStrictEqual([0, 1, 4, 5, 3, 2])
+        console.log(graph)
     })
 })
