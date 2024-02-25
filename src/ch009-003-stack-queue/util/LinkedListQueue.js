@@ -3,6 +3,7 @@ import { LinkedListNode } from './LinkedListNode'
 export class LinkedListQueue {
     constructor() {
         this.clear()
+        this.length = 0
     }
     add(data) {
         const newNode = new LinkedListNode(data)
@@ -13,6 +14,7 @@ export class LinkedListQueue {
             this.tail.next = newNode
             this.tail = newNode
         }
+        this.length++
     }
     remove() {
         if (this.isEmpty()) {
@@ -20,6 +22,9 @@ export class LinkedListQueue {
         }
         const data = this.head.data
         this.head = this.head.next
+        if (this.length > 0) {
+            this.length--
+        }
         return data
     }
     peek() {
@@ -29,10 +34,14 @@ export class LinkedListQueue {
         return this.head.data
     }
     isEmpty() {
-        return this.head === null
+        return this.length === 0
     }
     clear() {
         this.head = null
         this.tail = null
+        this.length = 0
+    }
+    size() {
+        return this.length
     }
 }
