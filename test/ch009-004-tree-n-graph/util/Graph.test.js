@@ -1,5 +1,4 @@
 import { Graph } from '../../../src/ch009-004-tree-n-graph/util/Graph'
-import { Logger } from '../../../src/ch009-004-tree-n-graph/util/Logger'
 
 describe('Graph test', () => {
     let graph
@@ -20,7 +19,7 @@ describe('Graph test', () => {
         graph.addEdge(3, 2)
         graph.addEdge(3, 4)
     })
-    test('depthFirstSearch', () => {
+    test('graph가 제대로 생성됐는지 확인', () => {
         console.log(graph)
     })
 })

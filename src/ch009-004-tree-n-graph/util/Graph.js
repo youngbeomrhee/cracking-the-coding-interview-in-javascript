@@ -1,5 +1,3 @@
-import { LinkedListQueue } from '../../ch009-003-stack-queue/util/LinkedListQueue'
-
 export class GraphNode {
     constructor(name) {
         this.name = name
