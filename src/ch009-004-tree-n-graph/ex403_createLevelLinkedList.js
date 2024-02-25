@@ -6,9 +6,9 @@ import { LinkedListQueue } from '../ch009-003-stack-queue/util/LinkedListQueue'
  * 즉, 트리의 깊이가 D라면 D개의 연결리스트를 만들어야 한다.
  */
 // 주어진 이진 트리를 너비우선탐색하면서 너비(depth)별로 linked list에 저장
-export function createLevelLinkedList(rootBinaryNode) {
+export function createLevelLinkedList(binaryNodeRoot) {
     // 예외처리
-    if (!rootBinaryNode) {
+    if (!binaryNodeRoot) {
         return []
     }
 
@@ -16,7 +16,7 @@ export function createLevelLinkedList(rootBinaryNode) {
     const levelLinkedLists = []
     // 탐색할 노드를 담을 Queue
     const q = new LinkedListQueue()
-    q.add(rootBinaryNode)
+    q.add(binaryNodeRoot)
 
     while (!q.isEmpty()) {
         // level에 따라 담기게 될 node의 갯수
