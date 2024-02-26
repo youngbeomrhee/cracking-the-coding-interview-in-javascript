@@ -25,6 +25,9 @@ describe('isBalancedTree true', () => {
         */
         expect(isBalancedTree(root)).toBe(true)
     })
+})
+
+describe('isBalancedTree false', () => {
     test('실행결과 확인', () => {
         const root = new BinaryNode(1)
         root.left = new BinaryNode(2)
