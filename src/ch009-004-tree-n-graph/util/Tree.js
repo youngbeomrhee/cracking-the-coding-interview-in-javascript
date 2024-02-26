@@ -6,6 +6,13 @@ export class BinaryNode {
     }
 }
 
+export class LinkedBinaryNode extends BinaryNode {
+    constructor(name, parent = null) {
+        super(name)
+        this.parent = parent
+    }
+}
+
 export function printTree(node, prefix = '', isLeft = true) {
     if (node.right) {
         printTree(node.right, `${prefix}${isLeft ? '|   ' : '    '}`, false)

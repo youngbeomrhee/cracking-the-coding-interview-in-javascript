@@ -1,8 +1,8 @@
+import { inorderSuccessor } from '../../src/ch009-004-tree-n-graph/ex406_inorderSuccessor'
 import {
     LinkedBinaryNode,
-    inorderSuccessor,
-} from '../../src/ch009-004-tree-n-graph/ex406_inorderSuccessor'
-import { printTree } from '../../src/ch009-004-tree-n-graph/util/Tree'
+    printTree,
+} from '../../src/ch009-004-tree-n-graph/util/Tree'
 
 describe('inorderSuccessor', () => {
     let root

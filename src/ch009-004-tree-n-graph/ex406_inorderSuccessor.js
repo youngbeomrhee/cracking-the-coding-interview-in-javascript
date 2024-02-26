@@ -4,13 +4,6 @@ import { BinaryNode } from './util/Tree'
  * 후속자: 이진 탐색 트리에서 주어진 노드의 '다음' 노드(중위 후속자(in-order successor))를 찾는 알고리즘을 작성하라.
  * 각 노드에는 부모 노드를 가리키는 링크가 존재한다고 가정하자.
  */
-export class LinkedBinaryNode extends BinaryNode {
-    constructor(name, parent = null) {
-        super(name)
-        this.parent = parent
-    }
-}
-
 export function inorderSuccessor(binaryNode) {
     function _findMin(binaryNode) {
         while (binaryNode.left) {
