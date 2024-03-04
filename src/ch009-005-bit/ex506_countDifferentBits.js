@@ -11,7 +11,7 @@ export function countDifferentBits(a, b) {
 
     while (xor !== 0) {
         diffrentCount += xor & 1
-        xor >>= 1
+        xor >>>= 1
     }
     return diffrentCount
 }
