@@ -4,7 +4,7 @@ import {
     inOrderTraversal,
     postOrderTraversal,
     preOrderTraversal,
-} from '../../../src/ch009-004-tree-n-graph/util/TreeNode'
+} from '../../../src/ch009-004-tree-n-graph/util/Tree'
 
 describe('Tree test', () => {
     let root
